@@ -46,6 +46,8 @@ function checkCollision(rock) {
                * 3. The rock's left edge is < the DODGER's right edge,
                *    and the rock's right edge is > the DODGER's right edge
                */) {
+               rockLeftEdge < dodgerRightEdge;
+               
       return true
     }
   }
@@ -65,7 +67,20 @@ function createRock(x) {
   /**
    * Now that we have a rock, we'll need to append
    * it to GAME and move it downwards.
-   */
+   */ 
+   function move(rock) {
+     var top = 0
+ 
+     function step() {
+       el.style.top = `${top += 2}px`
+ 
+       if (top < 200) {
+         window.requestAnimationFrame(step)
+       }
+     }
+ 
+     window.requestAnimationFrame(step)
+   }
 
 
   /**
